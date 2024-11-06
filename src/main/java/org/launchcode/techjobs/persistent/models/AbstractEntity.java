@@ -16,7 +16,7 @@ public abstract class AbstractEntity {
     @GeneratedValue
     private int id;
 
-    // Should i use NotNull or NotBlank?
+    // Should I use NotNull or NotBlank?
     @NotNull
     @Size(min=3, max=100)
     private String name;
