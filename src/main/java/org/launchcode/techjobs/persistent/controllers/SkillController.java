@@ -15,16 +15,15 @@ import java.util.Optional;
 @RequestMapping("skills")
 public class SkillController {
 
-    // Task 2:
     @Autowired
     private SkillRepository skillRepository;
-
 
     // Index method to display all skills, maps to skills/index template
     @GetMapping("")
     public String index(Model model) {
-        model.addAttribute("skills, skillsRepository.findAll()");
-        return "skill/index";
+        // Corrected attribute setting
+        model.addAttribute("skills", skillRepository.findAll());
+        return "skills/index"; // Ensure there's a template at skills/index.html
     }
 
     // Display form to add a new skill
@@ -42,7 +41,9 @@ public class SkillController {
             return "skills/add";
         }
         skillRepository.save(newSkill);
-        return "redirect:";
+
+        // Redirect to the skills list after adding a skill
+        return "redirect:/skills";
     }
 
     // Display individual skill details
@@ -54,7 +55,7 @@ public class SkillController {
             model.addAttribute("skill", skill);
             return "skills/view";
         } else {
-            return "redirect:../";
+            return "redirect:/skills";
         }
     }
 }
