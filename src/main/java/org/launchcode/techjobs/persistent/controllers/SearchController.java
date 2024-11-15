@@ -23,7 +23,7 @@ public class SearchController {
     @RequestMapping("")
     public String search(Model model) {
         model.addAttribute("columns", columnChoices);
-        return "search";
+        return "search"; // Always drop the .html when making return
     }
 
     // TODO #3 - Create a handler to process a search request and render the updated search view.
@@ -39,6 +39,6 @@ public class SearchController {
         model.addAttribute("title", "Jobs with " + columnChoices.get(searchType) + ": " + searchTerm);
         model.addAttribute("jobs", jobs);
 
-        return "search";
+        return "search"; // Always drop the .html when making return
     }
 }

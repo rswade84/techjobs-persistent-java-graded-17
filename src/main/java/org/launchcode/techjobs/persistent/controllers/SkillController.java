@@ -23,14 +23,14 @@ public class SkillController {
     public String index(Model model) {
         // Corrected attribute setting
         model.addAttribute("skills", skillRepository.findAll());
-        return "skills/index"; // Ensure there's a template at skills/index.html
+        return "skills/index"; // Always drop the .html when making return
     }
 
     // Display form to add a new skill
     @GetMapping("add")
     public String displayAddSkillForm(Model model) {
         model.addAttribute(new Skill());
-        return "skills/add";
+        return "skills/add"; // Always drop the .html when making return
     }
 
     // Process the add skill form, saving valid skills to the repository
@@ -43,7 +43,7 @@ public class SkillController {
         skillRepository.save(newSkill);
 
         // Redirect to the skills list after adding a skill
-        return "redirect:/skills";
+        return "redirect:/skills"; // Always drop the .html when making return
     }
 
     // Display individual skill details
@@ -55,7 +55,7 @@ public class SkillController {
             model.addAttribute("skill", skill);
             return "skills/view";
         } else {
-            return "redirect:/skills";
+            return "redirect:/skills"; // Always drop the .html when making return
         }
     }
 }

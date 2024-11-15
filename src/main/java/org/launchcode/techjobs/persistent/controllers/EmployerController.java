@@ -26,7 +26,7 @@ public class EmployerController {
     public String index(Model model){
         model.addAttribute("title", "All Employers");
         model.addAttribute("employers", employerRepository.findAll());
-        return "employers/index";
+        return "employers/index"; // Always drop the .html when making return
     }
 
     @GetMapping("add")
