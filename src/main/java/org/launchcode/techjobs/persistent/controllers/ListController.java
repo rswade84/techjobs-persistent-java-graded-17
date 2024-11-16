@@ -24,18 +24,20 @@ import java.util.HashMap;
 public class ListController {
 
     @Autowired
-    private JobRepository jobRepository;
+    private JobRepository jobRepository; // Gives access...
 
     @Autowired
-    private EmployerRepository employerRepository;
+    private EmployerRepository employerRepository; // Gives access...
 
     @Autowired
-    private SkillRepository skillRepository;
+    private SkillRepository skillRepository; // Gives access...
 
+    // Store key/value for columnChoices
     static HashMap<String, String> columnChoices = new HashMap<>();
 
     public ListController () {
 
+        // Adds search options...
         columnChoices.put("all", "All");
         columnChoices.put("employer", "Employer");
         columnChoices.put("skill", "Skill");

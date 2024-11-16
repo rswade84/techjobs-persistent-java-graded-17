@@ -48,8 +48,7 @@ public class SkillController {
     @GetMapping("view/{skillId}")
     public String displayViewSkill(Model model, @PathVariable int skillId) {
 
-        // Find id
-        Optional<Skill> optSkill = skillRepository.findById(skillId);
+        Optional<Skill> optSkill = skillRepository.findById(skillId); // Find id
 
         if (optSkill.isPresent()) { // If present
             Skill skill = optSkill.get(); // Get skill obj

@@ -35,7 +35,6 @@ public class EmployerController {
     }
 
     // Task 2: Use employerRepository and the appropriate method to save a valid object
-    // Errors are from our AbstractEntity class
     @PostMapping("add")
     public String processAddEmployerForm(@ModelAttribute @Valid Employer newEmployer,
                                          Errors errors, Model model) {

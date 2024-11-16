@@ -25,14 +25,14 @@ public class HomeController {
 
     // Task 3: Add employerRepository with AutoWired annotation
     @Autowired
-    private EmployerRepository employerRepository;
+    private EmployerRepository employerRepository; // Gives access...
 
     @Autowired
-    private JobRepository jobRepository;
+    private JobRepository jobRepository; // Gives access...
 
     // Task 4: Autowire SkillRepository
     @Autowired
-    private SkillRepository skillRepository;
+    private SkillRepository skillRepository; // Gives access...
 
     @RequestMapping("/")
     public String index(Model model) {
