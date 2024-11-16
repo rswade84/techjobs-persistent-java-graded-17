@@ -1,3 +1,4 @@
+// Handle job searching/filtering
 package org.launchcode.techjobs.persistent.controllers;
 
 import org.launchcode.techjobs.persistent.models.Job;
@@ -16,6 +17,7 @@ import java.util.HashMap;
 
 /**
  * Created by LaunchCode
+ * Handle job searching/filtering
  */
 @Controller
 @RequestMapping(value = "list")
@@ -44,12 +46,14 @@ public class ListController {
     public String list(Model model) {
         model.addAttribute("employers", employerRepository.findAll());
         model.addAttribute("skills", skillRepository.findAll());
-        return "list"; // Always drop the .html when making return
+        return "list";
     }
 
     @RequestMapping(value = "jobs")
     public String listJobsByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value) {
+
         Iterable<Job> jobs;
+
         if (column.toLowerCase().equals("all")){
             jobs = jobRepository.findAll();
             model.addAttribute("title", "All Jobs");
@@ -59,6 +63,6 @@ public class ListController {
         }
         model.addAttribute("jobs", jobs);
 
-        return "list-jobs"; // Always drop the .html when making return
+        return "list-jobs";
     }
 }

@@ -1,3 +1,4 @@
+// Employer extends from AbstractEntity
 package org.launchcode.techjobs.persistent.models;
 
 import jakarta.persistence.Entity;
@@ -9,7 +10,6 @@ import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
-// Employer inherits properties from AbstractEntity
 @Entity
 public class Employer extends AbstractEntity {
 
@@ -26,18 +26,10 @@ public class Employer extends AbstractEntity {
 
     public Employer() {}
 
-    // returns type "string"
-    public String getLocation() {
-        return location;
-    }
+    public String getLocation() { return location; }
 
-    // doesn't return anything, only sets. Use void...
-    public void setLocation(String location) {
-        this.location = location;
-    }
+    public void setLocation(String location) { this.location = location; }
 
     // Task 3: Added a getter to access array list of jobs
-    public List<Job> getJobs() {
-        return jobs;
-    }
+    public List<Job> getJobs() { return jobs; }
 }

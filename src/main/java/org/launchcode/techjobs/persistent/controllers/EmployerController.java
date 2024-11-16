@@ -1,3 +1,4 @@
+// Manages employer CRUD operations
 package org.launchcode.techjobs.persistent.controllers;
 
 import jakarta.validation.Valid;
@@ -16,17 +17,15 @@ import java.util.Optional;
 public class EmployerController {
 
     // Task 2: Add a private field of EmployerRepository type called employerRepository
-    // Added @Autowired to handle dependency injection
-    @Autowired
+    @Autowired // Handles dependency injection
     private EmployerRepository employerRepository;
 
     // Task 2: Add an index method that responds at /employers with a list of all employers
-    // Uses employers/index template and adds list of all employers to the model
     @RequestMapping("/")
     public String index(Model model){
         model.addAttribute("title", "All Employers");
         model.addAttribute("employers", employerRepository.findAll());
-        return "employers/index"; // Always drop the .html when making return
+        return "employers/index";
     }
 
     @GetMapping("add")
@@ -36,29 +35,31 @@ public class EmployerController {
     }
 
     // Task 2: Use employerRepository and the appropriate method to save a valid object
-    // Added employerRepository.save() to save new employer when form is valid
+    // Errors are from our AbstractEntity class
     @PostMapping("add")
     public String processAddEmployerForm(@ModelAttribute @Valid Employer newEmployer,
                                          Errors errors, Model model) {
-        if (errors.hasErrors()) {
+
+        if (errors.hasErrors()) {  // If errors found.... Add to the model....
             model.addAttribute("title", "Add Employer");
             return "employers/add";
         }
-        employerRepository.save(newEmployer);
+        employerRepository.save(newEmployer); // Save new employer when form is valid
         return "redirect:/employers/";
     }
 
     // Task 2: Use employer object's id field to grab the correct information from employerRepository
-    // Fixed Optional<Employer> to use employerRepository.findById()
     @GetMapping("view/{employerId}")
     public String displayViewEmployer(Model model, @PathVariable int employerId) {
-        Optional optEmployer = employerRepository.findById(employerId);
-        if (optEmployer.isPresent()) {
-            Employer employer = (Employer) optEmployer.get();
-            model.addAttribute("employer", employer);
-            return "employers/view";
+
+        Optional optEmployer = employerRepository.findById(employerId); // Find Id
+
+        if (optEmployer.isPresent()) { // If present
+            Employer employer = (Employer) optEmployer.get(); // get the employer obj
+            model.addAttribute("employer", employer); // add it to the view
+            return "employers/view"; // show the page
         } else {
-            return "redirect:../";
+            return "redirect:../"; // redirect if not found
         }
     }
 }

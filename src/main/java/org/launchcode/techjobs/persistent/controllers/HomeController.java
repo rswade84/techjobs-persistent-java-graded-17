@@ -1,3 +1,4 @@
+// Manages job creation/viewing
 package org.launchcode.techjobs.persistent.controllers;
 
 import jakarta.validation.Valid;
@@ -17,6 +18,7 @@ import java.util.List;
 
 /**
  * Created by LaunchCode
+ * Manages job creation/viewing
  */
 @Controller
 public class HomeController {
@@ -25,7 +27,6 @@ public class HomeController {
     @Autowired
     private EmployerRepository employerRepository;
 
-    // Autowire jobRepository
     @Autowired
     private JobRepository jobRepository;
 
@@ -47,7 +48,6 @@ public class HomeController {
         // Task 3: Add employer data from employerRepository to the form template
         model.addAttribute("employers", employerRepository.findAll());
         model.addAttribute("skills", skillRepository.findAll());
-
         return "add";
     }
 
@@ -56,18 +56,18 @@ public class HomeController {
                                     Errors errors, Model model, @RequestParam int employerId,
                                     @RequestParam List<Integer> skills) {
 
-        if (errors.hasErrors()) {
+        if (errors.hasErrors()) { // Validation check
             model.addAttribute("title", "Add Job");
             return "add";
         }
 
-        // Find employer by ID and set it on newJob
+        // Set employer id
         Employer employer = employerRepository.findById(employerId).orElse(null);
         if (employer != null) {
             newJob.setEmployer(employer);
         }
 
-        // Find skills by IDs and set them on newJob
+        // Set skills (many to many)
         List<Skill> skillList = (List<Skill>) skillRepository.findAllById(skills);
         newJob.setSkills(skillList);
 
@@ -79,6 +79,6 @@ public class HomeController {
 
     @GetMapping("view/{jobId}")
     public String displayViewJob(Model model, @PathVariable int jobId) {
-        return "view"; // Always drop the .html when making return
+        return "view";
     }
 }

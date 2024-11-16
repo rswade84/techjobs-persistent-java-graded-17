@@ -1,3 +1,4 @@
+// Job extends from AbstractEntity
 package org.launchcode.techjobs.persistent.models;
 
 import jakarta.persistence.Entity;

@@ -1,3 +1,4 @@
+// Manages job search functionality
 package org.launchcode.techjobs.persistent.controllers;
 
 import org.launchcode.techjobs.persistent.models.Job;
@@ -12,6 +13,7 @@ import static org.launchcode.techjobs.persistent.controllers.ListController.colu
 
 /**
  * Created by LaunchCode
+ * Manages job search functionality
  */
 @Controller
 @RequestMapping("search")
@@ -39,6 +41,6 @@ public class SearchController {
         model.addAttribute("title", "Jobs with " + columnChoices.get(searchType) + ": " + searchTerm);
         model.addAttribute("jobs", jobs);
 
-        return "search"; // Always drop the .html when making return
+        return "search";
     }
 }

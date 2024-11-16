@@ -1,3 +1,6 @@
+// Subclass Template, Forces certain methods to be implemented
+// Common fields (id, name)
+
 package org.launchcode.techjobs.persistent.models;
 
 
@@ -9,34 +12,27 @@ import jakarta.validation.constraints.Size;
 
 import java.util.Objects;
 
-@MappedSuperclass
+@MappedSuperclass // this is a base class for entities
 public abstract class AbstractEntity {
 
-    @Id
-    @GeneratedValue
+    @Id // Primary Key
+    @GeneratedValue // Auto-generates ID Values
     private int id;
 
-    // Should I use NotNull or NotBlank?
+    // NotNull = Only checks if value is not null
+    // NotBlank = Checks value is not null AND not empty AND not just whitespace
     @NotNull
     @Size(min=3, max=100)
     private String name;
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
     @Override
-    public String toString() {
-        return name;
-    }
+    public String toString() { return name; }
 
     @Override
     public boolean equals(Object o) {
