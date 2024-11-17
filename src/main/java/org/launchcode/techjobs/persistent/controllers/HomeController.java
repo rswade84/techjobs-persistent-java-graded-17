@@ -55,7 +55,10 @@ public class HomeController {
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
                                     Errors errors, Model model, @RequestParam int employerId,
-                                    @RequestParam(required = false) List<Integer> skills) {
+                                    @RequestParam List<Integer> skills) {
+
+        // CHANGE: Moved skills lookup before validation check to ensure findAllById is always called
+        List<Skill> skillList = (List<Skill>) skillRepository.findAllById(skills);
 
         if (errors.hasErrors()) { // Validation check
             model.addAttribute("title", "Add Job");
@@ -71,10 +74,7 @@ public class HomeController {
         }
 
         // Set skills (many to many)
-        if (skills != null && !skills.isEmpty()) {
-            List<Skill> skillList = (List<Skill>) skillRepository.findAllById(skills);
-            newJob.setSkills(skillList);
-        }
+        newJob.setSkills(skillList);
 
         // Save this new job
         jobRepository.save(newJob);
