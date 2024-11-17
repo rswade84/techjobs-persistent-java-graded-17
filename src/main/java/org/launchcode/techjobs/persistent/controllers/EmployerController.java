@@ -12,12 +12,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+/**
+ * Created by LaunchCode
+ *  handles /employers, CRUD ops for empl obj
+ */
+
 @Controller
 @RequestMapping("/employers")
 public class EmployerController {
 
     // Task 2: Add a private field of EmployerRepository type called employerRepository
-    @Autowired // Handles dependency injection
+    @Autowired // Creates instance of class and handles dependency injection
     private EmployerRepository employerRepository;
 
     // Task 2: Add an index method that responds at /employers with a list of all employers

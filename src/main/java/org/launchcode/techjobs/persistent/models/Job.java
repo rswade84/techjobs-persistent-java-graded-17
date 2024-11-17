@@ -12,8 +12,7 @@ import java.util.List;
 public class Job extends AbstractEntity {
 
     // Task 3: Replace the employer field to be of type Employer instead of String
-    // @ManyToOne indicates many jobs can reference one employer
-    @ManyToOne
+    @ManyToOne // jobs/employer
     private Employer employer;
 
     // Task 4: change return type to List<> named skills
@@ -24,7 +23,7 @@ public class Job extends AbstractEntity {
 
     // Task 3: Update constructor to take Employer object instead of String
     public Job(Employer anEmployer, List<Skill> someSkills) {
-        super();
+        super(); // invokes no-args constructor of super-class
         this.employer = anEmployer;
         this.skills = someSkills;
     }

@@ -1,6 +1,4 @@
-// Subclass Template, Forces certain methods to be implemented
-// Common fields (id, name)
-
+// Template for (job,employer,skill), Forces certain methods to be implemented
 package org.launchcode.techjobs.persistent.models;
 
 
@@ -12,15 +10,19 @@ import jakarta.validation.constraints.Size;
 
 import java.util.Objects;
 
-@MappedSuperclass // this is a base class for entities
+/**
+ * Created by LaunchCode
+ *  base/parent class (job,skill,emplyer)
+ *  Msuper: shares common fields,
+ */
+
+@MappedSuperclass
 public abstract class AbstractEntity {
 
     @Id // Primary Key
     @GeneratedValue // Auto-generates ID Values
     private int id;
 
-    // NotNull = Only checks if value is not null
-    // NotBlank = Checks value is not null AND not empty AND not just whitespace
     @NotNull
     @Size(min=3, max=100)
     private String name;
