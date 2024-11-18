@@ -8,7 +8,13 @@ import jakarta.persistence.ManyToOne;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+
+/**
+ * Created by LaunchCode
+ * Manages job creation/viewing
+ */
+
+@Entity // Maps to a database (fields become columns)
 public class Job extends AbstractEntity {
 
     // Task 3: Replace the employer field to be of type Employer instead of String

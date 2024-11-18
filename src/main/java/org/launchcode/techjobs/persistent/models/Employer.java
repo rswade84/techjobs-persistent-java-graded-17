@@ -15,17 +15,18 @@ public class Employer extends AbstractEntity {
 
     // Task 3: Add a jobs field to establish the one-to-many relationship
     // @OneToMany indicates one employer can have many jobs
-    // @JoinColumn creates a column in the job table to store the employer ID
+    // @JoinColumn creates a foreign key column in the job table to link back to employer
     @OneToMany
     @JoinColumn(name = "employer_id")    // This specifies the foreign key column
     private List<Job> jobs = new ArrayList<>();
 
-    @NotNull
-    @Size(min=3, max=75)
+    @NotNull // Ensures field is not null, throws validation error, if so
+    @Size(min=3, max=75) // Ensure fields has a min/max character length
     private String location;
 
     public Employer() {}
 
+    // Getter & Setter
     public String getLocation() { return location; }
 
     public void setLocation(String location) { this.location = location; }

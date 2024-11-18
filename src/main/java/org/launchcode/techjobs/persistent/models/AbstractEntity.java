@@ -16,17 +16,18 @@ import java.util.Objects;
  *  Msuper: shares common fields,
  */
 
-@MappedSuperclass
+@MappedSuperclass // Indicates a base class (mapped to database columns in subclasses, but is not a database table itself)
 public abstract class AbstractEntity {
 
-    @Id // Primary Key
+    @Id // Marks Primary Key, needed to uniquely identify instances in db.
     @GeneratedValue // Auto-generates ID Values
     private int id;
 
-    @NotNull
-    @Size(min=3, max=100)
+    @NotNull // // Ensures field cannot be null; throws a validation error.
+    @Size(min=3, max=100) // Ensures field has a size (length) between 3 and 100 characters.
     private String name;
 
+    // Getters & Setter
     public int getId() { return id; }
 
     public String getName() { return name; }

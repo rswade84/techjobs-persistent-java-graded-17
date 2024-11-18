@@ -33,6 +33,7 @@ public class EmployerController {
         return "employers/index";
     }
 
+    // Creates new Employer obj and adds to view
     @GetMapping("add")
     public String displayAddEmployerForm(Model model) {
         model.addAttribute(new Employer());
@@ -44,7 +45,7 @@ public class EmployerController {
     public String processAddEmployerForm(@ModelAttribute @Valid Employer newEmployer,
                                          Errors errors, Model model) {
 
-        if (errors.hasErrors()) {  // If errors found.... Add to the model....
+        if (errors.hasErrors()) { // Validation check (adds to view)
             model.addAttribute("title", "Add Employer");
             return "employers/add";
         }

@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity  // This is crucial - makes it a managed type
+@Entity  // Maps to a database (fields become columns)
 public class Skill extends AbstractEntity {
 
 

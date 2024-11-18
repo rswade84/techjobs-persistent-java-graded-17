@@ -20,7 +20,10 @@ public class JobData {
      * @param value Value of the field to search for.
      * @param allJobs The list of jobs to search.
      * @return List of all jobs matching the criteria.
+     *
      */
+
+    // Search jobs by column and field
     public static ArrayList<Job> findByColumnAndValue(String column, String value, Iterable<Job> allJobs) {
 
         ArrayList<Job> results = new ArrayList<>();
