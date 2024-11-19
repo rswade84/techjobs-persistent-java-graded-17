@@ -17,11 +17,11 @@ public class Employer extends AbstractEntity {
     // @OneToMany indicates one employer can have many jobs
     // @JoinColumn creates a foreign key column in the job table to link back to employer
     @OneToMany
-    @JoinColumn(name = "employer_id")    // This specifies the foreign key column
+    @JoinColumn(name = "employer_id")
     private List<Job> jobs = new ArrayList<>();
 
-    @NotNull // Ensures field is not null, throws validation error, if so
-    @Size(min=3, max=75) // Ensure fields has a min/max character length
+    @NotNull
+    @Size(min=3, max=75)
     private String location;
 
     public Employer() {}

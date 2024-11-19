@@ -23,8 +23,8 @@ public abstract class AbstractEntity {
     @GeneratedValue // Auto-generates ID Values
     private int id;
 
-    @NotNull // // Ensures field cannot be null; throws a validation error.
-    @Size(min=3, max=100) // Ensures field has a size (length) between 3 and 100 characters.
+    @NotNull //Ensures field cannot be null; throws a validation error.
+    @Size(min=3, max=100, message="Name must be between 3 and 100 characters long.") // Ensures field has a size (length) between 3 and 100 characters.
     private String name;
 
     // Getters & Setter

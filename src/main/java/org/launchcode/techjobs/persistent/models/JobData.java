@@ -1,14 +1,11 @@
-// JobData holds...
 package org.launchcode.techjobs.persistent.models;
 
 import java.util.ArrayList;
-
 
 /**
  * Created by LaunchCode
  */
 public class JobData {
-
 
     /**
      * Returns the results of searching the Jobs data by field and search term.
@@ -20,18 +17,24 @@ public class JobData {
      * @param value Value of the field to search for.
      * @param allJobs The list of jobs to search.
      * @return List of all jobs matching the criteria.
-     *
+     * Search jobs by column and field
+     * Iterable: allows iteration of elements
      */
 
-    // Search jobs by column and field
-    public static ArrayList<Job> findByColumnAndValue(String column, String value, Iterable<Job> allJobs) {
+    public static ArrayList<Job> findByColumnAndValue(
+            String column, // field
+            String value, // term
+            Iterable<Job> allJobs) { // collection
 
+        // Store any matches in ArrayList<>
         ArrayList<Job> results = new ArrayList<>();
 
+        // Search "all"
         if (value.toLowerCase().equals("all")){
-            return (ArrayList<Job>) allJobs;
+            return (ArrayList<Job>) allJobs; // return "all"
         }
 
+        // Search "all columns"... sep method findByValue()...
         if (column.equals("all")){
             results = findByValue(value, allJobs);
             return results;

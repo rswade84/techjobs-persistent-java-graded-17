@@ -23,9 +23,7 @@ public class Skill extends AbstractEntity {
 
     public Skill() {}  // Here is the required empty constructor
 
-    public String getDescription() {
-        return description;
-    }
+    public String getDescription() { return description; }
 
     public void setDescription(String description) {
         this.description = description;

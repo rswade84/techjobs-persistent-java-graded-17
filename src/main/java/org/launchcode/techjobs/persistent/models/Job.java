@@ -17,8 +17,8 @@ import java.util.List;
 @Entity // Maps to a database (fields become columns)
 public class Job extends AbstractEntity {
 
-    // Task 3: Replace the employer field to be of type Employer instead of String
-    @ManyToOne // jobs/employer
+    // Task 3: Replace the employer field to be of type Employer instead of String. jobs/employer
+    @ManyToOne
     private Employer employer;
 
     // Task 4: change return type to List<> named skills

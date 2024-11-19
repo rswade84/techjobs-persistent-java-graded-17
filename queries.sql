@@ -1,3 +1,6 @@
+--inner: return skills associated
+--left: return all skills
+
 --Part 1
 
 --Part 2
